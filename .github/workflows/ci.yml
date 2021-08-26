@@ -7,8 +7,9 @@ on:
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
-    env:
-      working-directory: website
+    defaults:
+      run:
+        working-directory: website
 
     strategy:
       matrix:
