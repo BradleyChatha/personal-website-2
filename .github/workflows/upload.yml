@@ -6,8 +6,9 @@ on:
 jobs:
   deploy_website:
     runs-on: ubuntu-latest
-    env:
-      working-directory: website
+    defaults:
+      run:
+        working-directory: website
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
