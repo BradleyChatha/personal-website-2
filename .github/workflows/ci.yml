@@ -7,6 +7,8 @@ on:
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
+    env:
+      working-directory: website
 
     strategy:
       matrix:
@@ -16,9 +18,6 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
-
-      - name: "CD"
-        run: cd website
         
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.1.5

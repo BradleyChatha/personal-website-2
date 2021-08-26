@@ -6,12 +6,11 @@ on:
 jobs:
   deploy_website:
     runs-on: ubuntu-latest
+    env:
+      working-directory: website
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
-
-      - name: "CD"
-        run: cd website
     
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.3.0
