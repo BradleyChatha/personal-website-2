@@ -1,0 +1,7 @@
+infrastructure/private.tfvars
+infrastructure/terraform.tfstate.backup
+infrastructure/terraform.tfstate
+infrastructure/.terraform/
+infrastructure/.terraform.lock.hcl
+infrastructure/private
+.vscode/

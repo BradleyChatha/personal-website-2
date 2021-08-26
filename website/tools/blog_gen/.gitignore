@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/blog_gen
+blog_gen.so
+blog_gen.dylib
+blog_gen.dll
+blog_gen.a
+blog_gen.lib
+blog_gen-test-*
+*.exe
+*.o
+*.obj
+*.lst
+dub.selections.json
