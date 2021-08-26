@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy_website:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
+
+      - name: "CD"
         run: cd website
     
       - name: Setup Node.js environment
@@ -43,3 +45,6 @@ jobs:
           
       - name: Upload to S3
         run: aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
+
+      - name: Start Deployment
+        run: aws amplify start-deployment --app-id ${{ secrets.AMP_WEBSITE_APP_ID }} --branch-name prod --source-url s3://bradley-chatha/website/dist.zip 

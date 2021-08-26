@@ -10,18 +10,9 @@ data "archive_file" "empty" {
   }
 }
 
-resource "aws_lambda_function" "snippets" {
+resource "aws_lambda_function" "dub_stats_updater" {
   filename         = data.archive_file.empty.output_path
-  function_name    = "snippets"
-  role             = aws_iam_role.lambda.arn
-  handler          = "index.handler"
-  source_code_hash = filebase64sha256(data.archive_file.empty.output_path)
-  runtime          = "nodejs14.x"
-}
-
-resource "aws_lambda_function" "comments" {
-  filename         = data.archive_file.empty.output_path
-  function_name    = "comments"
+  function_name    = "dub_stats_updater"
   role             = aws_iam_role.lambda.arn
   handler          = "index.handler"
   source_code_hash = filebase64sha256(data.archive_file.empty.output_path)

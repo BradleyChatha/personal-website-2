@@ -36,20 +36,20 @@ resource "aws_apigatewayv2_authorizer" "api-cognito-admin" {
   }
 }
 
-resource "aws_apigatewayv2_integration" "comments" {
-  api_id               = aws_apigatewayv2_api.api.id
-  integration_type     = "AWS_PROXY"
-  connection_type      = "INTERNET"
-  description          = "Comments API"
-  integration_method   = "POST"
-  integration_uri      = aws_lambda_function.comments.invoke_arn
-  passthrough_behavior = "WHEN_NO_MATCH"
-}
+//resource "aws_apigatewayv2_integration" "comments" {
+//  api_id               = aws_apigatewayv2_api.api.id
+//  integration_type     = "AWS_PROXY"
+//  connection_type      = "INTERNET"
+//  description          = "Comments API"
+//  integration_method   = "POST"
+//  integration_uri      = aws_lambda_function.comments.invoke_arn
+//  passthrough_behavior = "WHEN_NO_MATCH"
+//}
 
-resource "aws_apigatewayv2_route" "api-personal-comments-POST" {
-  api_id             = aws_apigatewayv2_api.api.id
-  route_key          = "POST /personal/comments"
-  authorization_type = "JWT"
-  authorizer_id      = aws_apigatewayv2_authorizer.api-cognito-admin.id
-  target             = "integrations/${aws_apigatewayv2_integration.comments.id}"
-}
+//resource "aws_apigatewayv2_route" "api-personal-comments-POST" {
+//  api_id             = aws_apigatewayv2_api.api.id
+//  route_key          = "POST /personal/comments"
+//  authorization_type = "JWT"
+//  authorizer_id      = aws_apigatewayv2_authorizer.api-cognito-admin.id
+//  target             = "integrations/${aws_apigatewayv2_integration.comments.id}"
+//}
