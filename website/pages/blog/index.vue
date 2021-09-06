@@ -96,7 +96,7 @@ export default Vue.extend({
             const byCreated = posts.sort((a, b) =>
                 a.created < b.created ? -1 : a.created > b.created ? 1 : 0
             )
-            return byCreated[0].created.split('T')[0]
+            return byCreated.length ? byCreated[0].created.split('T')[0] : "null";
         },
 
         postUrl(post: Post) {
@@ -108,7 +108,7 @@ export default Vue.extend({
             const byUpdated = posts.sort((a, b) =>
                 a.updated < b.updated ? -1 : a.updated > b.updated ? 1 : 0
             )
-            return byUpdated[byUpdated.length - 1].updated.split('T')[0]
+            return byUpdated.length ? byUpdated[byUpdated.length - 1].updated.split('T')[0] : "null";
         },
     },
 })

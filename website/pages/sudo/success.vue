@@ -4,11 +4,12 @@
 
 <script>
 import Vue from 'vue'
+import { storeToken } from '~/lib/sudo.ts'
 export default Vue.extend({
     mounted() {
         const urlParams = new URLSearchParams(window.location.hash.slice(1))
         const urlParamsObj = Object.fromEntries(urlParams.entries())
-        window.localStorage.setItem('sudo-token', JSON.stringify(urlParamsObj))
+        storeToken(urlParamsObj)
         window.location.replace('/')
     },
 })

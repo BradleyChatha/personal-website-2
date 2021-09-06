@@ -10,9 +10,9 @@ data "archive_file" "empty" {
   }
 }
 
-resource "aws_lambda_function" "dub_stats_updater" {
+resource "aws_lambda_function" "view_count_public" {
   filename         = data.archive_file.empty.output_path
-  function_name    = "dub_stats_updater"
+  function_name    = "view_count_public"
   role             = aws_iam_role.lambda.arn
   handler          = "index.handler"
   source_code_hash = filebase64sha256(data.archive_file.empty.output_path)

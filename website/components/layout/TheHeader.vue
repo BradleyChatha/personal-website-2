@@ -1,7 +1,7 @@
 <template>
     <nav id="header" :class="headerClass">
         <section id="wrapper">
-            <div id="name" class="gfont teko">CHATHA</div>
+            <div id="name" class="gfont teko">{{ logoText }}</div>
             <div id="links" class="gfont cairo">
                 <nuxt-link to="/">Home</nuxt-link>
                 <nuxt-link to="/blog">Blog</nuxt-link>
@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { hasToken } from '~/lib/sudo'
 
 export enum HeaderStyle {
     HERO,
@@ -29,13 +30,19 @@ export default Vue.extend({
         },
     },
     data() {
-        return {}
+        return {
+            logoText: 'CHATHA'
+        }
     },
     computed: {
         headerClass() {
             return HeaderStyle[this.headerStyle as HeaderStyle]
         },
     },
+    mounted() {
+        if(hasToken())
+            (this as any).logoText = 'SUDO';
+    }
 })
 </script>
 
