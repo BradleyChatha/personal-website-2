@@ -1,0 +1,61 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: Build
+    image: nikolaik/python-nodejs:python3.9-nodejs16-alpine
+    commands:
+      - npm install
+      - npm run build
+  - name: Generate
+    image: nikolaik/python-nodejs:python3.9-nodejs16-alpine
+    when:
+      event:
+        - tag
+    commands:
+      - npm generate
+  - name: Zip
+    image: alpine:latest
+    when:
+      event:
+        - tag
+    commands:
+      - apk add zip
+      - mkdir website
+      - zip -r website/dist.zip dist/dist.zip
+  - name: Upload to S3 & trigger deployment
+    image: amazon/aws-cli
+    when:
+      event:
+        - tag
+    environment:
+      AWS_ACCESS_KEY_ID: 
+        from_secret: s3Access
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: s3Secret
+      AWS_DEFAULT_REGION: eu-west-2
+      AMP_WEBSITE_APP_ID:
+        from_secret: ampId
+    commands:
+      - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
+      - aws amplify start-deployment --app-id $AMP_WEBSITE_APP_ID --branch-name prod --source-url s3://bradley-chatha/website/dist.zip
+---
+kind: secret
+name: s3Access
+get:
+  path: secrets/drone/s3
+  name: access
+---
+kind: secret
+name: s3Secret
+get:
+  path: secrets/drone/s3
+  name: secret
+---
+kind: secret
+name: ampId
+get:
+  path: secrets/drone/personal
+  name: ampid

@@ -1,8 +1,4 @@
 // Defines security-related resources
-resource "aws_key_pair" "terraform" {
-  key_name   = "terraform"
-  public_key = file("${path.module}/private/public.pem")
-}
 
 resource "aws_security_group" "tls_inet" {
   name        = "allow_tls"
@@ -28,39 +24,6 @@ resource "aws_security_group" "tls_inet" {
 
   tags = {
     Name = "allow_tls"
-  }
-}
-
-resource "aws_security_group" "ssh_http_me" {
-  name        = "allow_me_ssh_http"
-  description = "Allows me to connect via raw HTTP and SSH"
-  vpc_id      = aws_vpc.personal.id
-
-  ingress {
-    description = "SSH From Me"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["${var.my_ip}/32"]
-  }
-
-  ingress {
-    description = "HTTP From Me"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["${var.my_ip}/32"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["${var.my_ip}/32"]
-  }
-
-  tags = {
-    Name = "allow_me_ssh_http"
   }
 }
 
