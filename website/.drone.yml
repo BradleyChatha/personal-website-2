@@ -7,6 +7,7 @@ steps:
   - name: Build
     image: nikolaik/python-nodejs:python3.9-nodejs16-alpine
     commands:
+      - cd website
       - npm install
       - npm run build
   - name: Generate
@@ -15,6 +16,7 @@ steps:
       event:
         - tag
     commands:
+      - cd website
       - npm generate
   - name: Zip
     image: alpine:latest
@@ -22,6 +24,7 @@ steps:
       event:
         - tag
     commands:
+      - cd website
       - apk add zip
       - mkdir website
       - zip -r website/dist.zip dist/dist.zip
@@ -39,6 +42,7 @@ steps:
       AMP_WEBSITE_APP_ID:
         from_secret: ampId
     commands:
+      - cd website
       - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
       - aws amplify start-deployment --app-id $AMP_WEBSITE_APP_ID --branch-name prod --source-url s3://bradley-chatha/website/dist.zip
 ---
