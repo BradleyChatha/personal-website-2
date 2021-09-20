@@ -49,27 +49,5 @@ steps:
         from_secret: ampId
     commands:
       - cd website
-      - aws configure set region "$AWS_DEFAULT_REGION"
-      - aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
-      - aws configure set aws_secret_access_key "AWS_SECRET_ACCESS_KEY"
       - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
       - aws amplify start-deployment --app-id $AMP_WEBSITE_APP_ID --branch-name prod --source-url s3://bradley-chatha/website/dist.zip
-
----
-kind: secret
-name: s3Access
-get:
-  path: secrets/drone/s3
-  name: access
----
-kind: secret
-name: s3Secret
-get:
-  path: secrets/drone/s3
-  name: secret
----
-kind: secret
-name: ampId
-get:
-  path: secrets/drone/personal
-  name: ampid
