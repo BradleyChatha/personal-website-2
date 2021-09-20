@@ -5,26 +5,32 @@ name: default
 
 steps:
   - name: Build
-    image: nikolaik/python-nodejs:python3.9-nodejs16-alpine
+    image: node:16-alpine
     commands:
       - cd website
       - apk add python3 make g++
       - npm install
       - npm run build
+---
+kind: pipeline
+type: docker
+name: promote
+
+trigger:
+  event:
+    - promote
+  target:
+    - production
+
+steps:
   - name: Generate
-    image: nikolaik/python-nodejs:python3.9-nodejs16-alpine
-    when:
-      event:
-        - tag
+    image: node:16-alpine
     commands:
       - cd website
       - apk add python3 make g++
       - npm generate
   - name: Zip
     image: alpine:latest
-    when:
-      event:
-        - tag
     commands:
       - cd website
       - apk add zip
@@ -32,9 +38,6 @@ steps:
       - zip -r website/dist.zip dist/dist.zip
   - name: Upload to S3 & trigger deployment
     image: amazon/aws-cli
-    when:
-      event:
-        - tag
     environment:
       AWS_ACCESS_KEY_ID: 
         from_secret: s3Access
@@ -47,6 +50,7 @@ steps:
       - cd website
       - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
       - aws amplify start-deployment --app-id $AMP_WEBSITE_APP_ID --branch-name prod --source-url s3://bradley-chatha/website/dist.zip
+
 ---
 kind: secret
 name: s3Access
