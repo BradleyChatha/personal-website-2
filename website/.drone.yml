@@ -28,7 +28,8 @@ steps:
     commands:
       - cd website
       - apk add python3 make g++
-      - npm generate
+      - npm install
+      - npm run generate
   - name: Zip
     image: alpine:latest
     commands:
