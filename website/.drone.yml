@@ -8,6 +8,7 @@ steps:
     image: nikolaik/python-nodejs:python3.9-nodejs16-alpine
     commands:
       - cd website
+      - sudo apk add python make g++
       - npm install
       - npm run build
   - name: Generate
@@ -17,6 +18,7 @@ steps:
         - tag
     commands:
       - cd website
+      - sudo apk add python make g++
       - npm generate
   - name: Zip
     image: alpine:latest
