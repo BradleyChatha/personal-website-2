@@ -5,7 +5,7 @@ name: default
 
 steps:
   - name: Build
-    image: node:16-alpine
+    image: node:14-alpine
     commands:
       - cd website
       - apk add python3 make g++
@@ -24,7 +24,7 @@ trigger:
 
 steps:
   - name: Generate
-    image: node:16-alpine
+    image: node:14-alpine
     commands:
       - cd website
       - apk add python3 make g++
