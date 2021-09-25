@@ -63,11 +63,11 @@
                     </p>
                     <p>
                         I have experience with
-                        <span class="highlight">setting up Github Actions</span>
+                        <span class="highlight">setting up Github Actions and Drone IO</span>
                         with a pipeline to
                         <span class="highlight">automatically deploy</span> new
                         builds. I use
-                        <span class="highlight">Terraform</span> to maintain all
+                        <span class="highlight">Terraform and Ansible</span> to maintain all
                         of my infrastructure whilst using
                         <span class="highlight">Grafana</span>
                         to help me monitor the health, performance, and other
@@ -328,6 +328,16 @@ export default Vue.extend({
                     img: '/img/logos/grafana.png',
                     alt: 'Grafana Logo',
                     link: 'https://grafana.com',
+                },
+                {
+                    img: '/img/logos/ansible.png',
+                    alt: 'Ansible Logo',
+                    link: 'https://ansible.com',
+                },
+                {
+                    img: '/img/logos/drone.png',
+                    alt: 'drone Logo',
+                    link: 'https://drone.io',
                 },
             ],
         }

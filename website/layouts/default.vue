@@ -27,7 +27,8 @@ export default Vue.extend({
         updateStyleFromRoute() {
             if (
                 this.$route.path.startsWith('/blog') ||
-                this.$route.path.startsWith('/tools')
+                this.$route.path.startsWith('/tools') ||
+                this.$route.path.startsWith('/projects')
             ) {
                 document.body.classList.add('gray')
                 this.headerStyle = HeaderStyle.BLOG
