@@ -1,6 +1,6 @@
 <template>
     <li>
-        <a :href="href" target="_blank" rel="noopener noreferrer">
+        <a class="not a link" :href="href" target="_blank" rel="noopener noreferrer">
             <div class="wrapper">
                 <div class="image">
                     <nuxt-img
