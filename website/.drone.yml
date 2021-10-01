@@ -52,7 +52,7 @@ steps:
       - cd website
       - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
   - name: Create hosts file
-    image: alpine/latest
+    image: alpine:latest
     environment:
       INSTANCE_ID:
         from_secret: instanceId
