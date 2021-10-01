@@ -69,8 +69,7 @@ steps:
       AWS_DEFAULT_REGION: eu-west-2
     commands:
       - cd website
-      - apk add ansible
-      - apk add aws-cli
-      - pip install boto3
+      - apk add --update --no-cache ansible aws-cli python3 py3-pip
+      - pip3 install boto3
       - ansible-galaxy collection install community.aws
       - ansible-playbook playbook.yaml -i ./hosts -t deploy
