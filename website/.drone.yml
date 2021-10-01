@@ -60,7 +60,7 @@ steps:
       - cd website
       - echo server ansible_connection=aws_ssm ansible_aws_ssm_instance_id=$INSTANCE_ID ansible_aws_ssm_bucket_name=bradley-chatha ansible_aws_ssm_region=eu-west-2 ansible_aws_ssm_plugin=/usr/bin/session-manager-plugin > hosts
   - name: Trigger deployment
-    image: amazon/aws-cli
+    image: alpine:latest
     environment:
       AWS_ACCESS_KEY:
         from_secret: s3Access
@@ -69,11 +69,7 @@ steps:
       AWS_DEFAULT_REGION: eu-west-2
     commands:
       - cd website
-      - amazon-linux-extras install epel
-      - yum update -y
-      - curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
-      - yum install -y session-manager-plugin.rpm
-      - yum install -y ansible
+      - apk add ansible
+      - apk add aws-cli
       - ansible-galaxy collection install community.aws
-      - ansible-galaxy collection install amazon.aws
       - ansible-playbook playbook.yaml -i ./hosts -t deploy
