@@ -51,33 +51,11 @@ steps:
     commands:
       - cd website
       - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
-  - name: Create hosts file
+  - name: Trigger deployment
     image: alpine:latest
     environment:
-      INSTANCE_ID:
-        from_secret: instanceId
+      PROSTAGMA_SECRET:
+        from_secret: prostagma
     commands:
-      - cd website
-      - echo server ansible_connection=aws_ssm ansible_aws_ssm_instance_id=$INSTANCE_ID ansible_aws_ssm_bucket_name=bradley-chatha ansible_aws_ssm_region=eu-west-2 > hosts
-  - name: Trigger deployment
-    image: ubuntu:latest
-    environment:
-      AWS_ACCESS_KEY:
-        from_secret: s3Access
-      AWS_SECRET_ACCESS_KEY:
-        from_secret: s3Secret
-      AWS_DEFAULT_REGION: eu-west-2
-    commands:
-      - cd website
-      - apt-get update
-      - apt-get upgrade
-      - apt-get install -y curl unzip
-      - curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-      - dpkg -i session-manager-plugin.deb
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip
-      - ./aws/install
-      - apt-get install -y ansible python3 python3-pip
-      - pip3 install boto3
-      - ansible-galaxy collection install community.aws
-      - ansible-playbook playbook.yaml -i ./hosts -t deploy
+      - apt fetch curl
+      - "curl -X POST -H 'Authorization: Bearer $PROSTAGMA_SECRET' https://prostagma.chatha.dev/webhook/personal"
