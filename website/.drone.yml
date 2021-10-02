@@ -57,5 +57,5 @@ steps:
       PROSTAGMA_SECRET:
         from_secret: prostagma
     commands:
-      - apt fetch curl
+      - apk fetch curl
       - "curl -X POST -H 'Authorization: Bearer $PROSTAGMA_SECRET' https://prostagma.chatha.dev/webhook/personal"
