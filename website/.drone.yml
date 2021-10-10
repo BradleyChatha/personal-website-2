@@ -58,4 +58,4 @@ steps:
         from_secret: prostagma
     commands:
       - apk add curl
-      - "curl -X POST -H 'Authorization: Bearer $PROSTAGMA_SECRET' https://prostagma.chatha.dev/webhook/personal"
+      - "curl -X POST -D '{\"secret\": \"$PROSTAGMA_SECRET\", \"trigger\": \"personal\"}' https://prostagma.chatha.dev/trigger"
