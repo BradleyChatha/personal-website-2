@@ -58,4 +58,4 @@ steps:
         from_secret: prostagma
     commands:
       - apk add curl
-      - "curl -X POST -D '{\"secret\": \"$PROSTAGMA_SECRET\", \"trigger\": \"personal\"}' https://prostagma.chatha.dev/trigger"
+      - "curl -X POST -H 'Content-Type: application/json' -d '{\"secret\": \"$PROSTAGMA_SECRET\", \"trigger\": \"personal\"}' https://prostagma.chatha.dev/trigger"
