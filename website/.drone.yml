@@ -40,9 +40,6 @@ steps:
       repo: bradleychatha/website
       tags: latest
       dockerfile: website/Dockerfile
-    when:
-      branch:
-        - master
   - name: Trigger deployment
     image: hendrikmaus/nomad-cli:latest
     environment:
@@ -52,6 +49,3 @@ steps:
         from_secret: NOMAD_TOKEN
     commands:
       - nomad run service.nomad
-    when:
-      branch:
-        - master
