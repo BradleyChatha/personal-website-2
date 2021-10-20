@@ -3,6 +3,10 @@ kind: pipeline
 type: docker
 name: default
 
+trigger:
+  branch:
+    - master
+
 steps:
   - name: Build
     image: node:14-alpine
@@ -11,25 +15,6 @@ steps:
       - apk add python3 make g++
       - npm install
       - npm run build
----
-kind: pipeline
-type: docker
-name: promote
-
-trigger:
-  event:
-    - promote
-  target:
-    - production
-
-steps:
-  - name: Generate
-    image: node:14-alpine
-    commands:
-      - cd website
-      - apk add python3 make g++
-      - npm install
-      - npm run generate
   - name: Upload to Docker
     image: plugins/docker
     settings:
