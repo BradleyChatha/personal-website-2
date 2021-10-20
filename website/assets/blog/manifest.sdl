@@ -1,7 +1,6 @@
 posts {
     dir "1-jsonserial"
     dir "2-metaprogramming-in-d"
-    dir "3-depression"
 }
 
 series "JsonSerialiser" {
@@ -23,12 +22,4 @@ series "MetaprogrammingInD" {
     tags "dlang" "metaprogramming"
     status "WIP"
     posts "dlang-compile-time-text-templates"
-}
-
-series "Depression" {
-    title "_"
-    description "_"
-    tags "_"
-    status "_"
-    posts "a-life-wasted"
 }
