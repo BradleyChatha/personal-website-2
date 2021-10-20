@@ -13,6 +13,11 @@ div {
     &:not(:first-child) {
         margin-top: 1rem;
     }
+
+    .wide input {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 label {

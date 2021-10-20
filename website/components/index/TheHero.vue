@@ -28,8 +28,7 @@
             <div class="fade group">
                 <p>
                     <span class="subText1 from left">
-                        I'm an aspiring Dumbass, with vast experience in
-                        programming, and a touch of DevOps.
+                        I'm an aspiring DevOps engineer with 10 years of programming experience.
                     </span>
                 </p>
                 <p>

@@ -1,20 +1,23 @@
 <template>
     <li>
-        <a class="not a link" :href="href" target="_blank" rel="noopener noreferrer">
-            <div class="wrapper">
-                <div class="image">
-                    <nuxt-img
-                        :src="image.url"
-                        :alt="image.alt"
-                        width="96px"
-                        format="webp"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="title and text">
-                    <h3>{{ title }}</h3>
-                    <slot />
-                </div>
+        <a
+            class="not a link wrapper"
+            :href="href"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <div class="image">
+                <nuxt-img
+                    :src="image.url"
+                    :alt="image.alt"
+                    width="96px"
+                    format="webp"
+                    loading="lazy"
+                />
+            </div>
+            <div class="title and text">
+                <h3>{{ title }}</h3>
+                <slot />
             </div>
         </a>
     </li>

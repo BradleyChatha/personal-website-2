@@ -30,32 +30,27 @@ steps:
       - apk add python3 make g++
       - npm install
       - npm run generate
-  - name: Zip
-    image: alpine:latest
-    commands:
-      - cd website
-      - apk add zip
-      - mkdir website
-      - cd dist
-      - zip -r ../website/dist.zip *
-  - name: Upload to S3
-    image: amazon/aws-cli
-    environment:
-      AWS_ACCESS_KEY_ID: 
-        from_secret: s3Access
-      AWS_SECRET_ACCESS_KEY:
-        from_secret: s3Secret
-      AWS_DEFAULT_REGION: eu-west-2
-      AMP_WEBSITE_APP_ID:
-        from_secret: ampId
-    commands:
-      - cd website
-      - aws s3api put-object --bucket bradley-chatha --key website/dist.zip --body website/dist.zip
+  - name: Upload to Docker
+    image: plugins/docker
+    settings:
+      username:
+          from_secret: DOCKER_USERNAME
+      password:
+          from_secret: DOCKER_PASSWORD
+      repo: bradleychatha/website
+      tags: latest
+    when:
+      branch:
+        - master
   - name: Trigger deployment
-    image: alpine:latest
+    image: hendrikmaus/nomad-cli:latest
     environment:
-      PROSTAGMA_SECRET:
-        from_secret: prostagma
+      NOMAD_ADDR:
+        from_secret: NOMAD_ADDR
+      NOMAD_TOKEN:
+        from_secret: NOMAD_TOKEN
     commands:
-      - apk add curl
-      - "curl -X POST -D '{\"secret\": \"$PROSTAGMA_SECRET\", \"trigger\": \"personal\"}' https://prostagma.chatha.dev/trigger"
+      - nomad run service.nomad
+    when:
+      branch:
+        - master

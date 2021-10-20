@@ -51,7 +51,7 @@
                         <span class="highlight">multifaceated skillset</span>
                         includes being a
                         <span class="highlight"
-                            >certified Cisco Network Associate.</span
+                            >certified AWS SysOps Associate (not yet, but future proofing my text!).</span
                         >
                     </p>
                     <p>

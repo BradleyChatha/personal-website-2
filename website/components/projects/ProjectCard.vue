@@ -140,7 +140,7 @@ export default Vue.extend({
     }
 
     .highlight {
-        color: #7127a4;
+        color: #307a53;
     }
 }
 </style>

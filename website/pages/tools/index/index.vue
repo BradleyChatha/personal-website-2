@@ -1,12 +1,20 @@
 <template>
     <div>
         <section class="deck">
-            <nuxt-link to="/tools/subnet-calculator" class="app card">
+            <nuxt-link to="/tools/subnet-calculator" class="app card not a link">
                 <div class="image blue gradiant one">
                     <span>192.168.1.0/24</span>
                 </div>
                 <div class="name">
                     <span class="gfont consolas">Subnet Calc</span>
+                </div>
+            </nuxt-link>
+            <nuxt-link to="/tools/dubstats-search" class="app card not a link">
+                <div class="image blue gradiant one">
+                    <span>Wubadub</span>
+                </div>
+                <div class="name">
+                    <span class="gfont consolas">Dubstats</span>
                 </div>
             </nuxt-link>
         </section>
