@@ -15,6 +15,7 @@ steps:
       - apk add python3 make g++
       - npm install
       - npm run build
+      - npm run generate
   - name: Upload to Docker
     image: plugins/docker
     settings:
