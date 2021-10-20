@@ -39,6 +39,7 @@ steps:
           from_secret: DOCKER_PASSWORD
       repo: bradleychatha/website
       tags: latest
+      dockerfile: website/Dockerfile
     when:
       branch:
         - master
