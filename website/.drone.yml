@@ -35,4 +35,5 @@ steps:
         from_secret: NOMAD_TOKEN
     commands:
       - cd website
+      - nomad stop personal
       - nomad run service.nomad

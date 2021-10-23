@@ -95,19 +95,19 @@ export default Vue.extend({
         }
     },
 
-    created() {
-        ;(this as any).json.headers = []
-        const parser = new DOMParser()
-        const el = parser.parseFromString((this as any).json.html, 'text/html')
-        el.querySelectorAll('h2, h3').forEach((h) => {
-            const heading = h as HTMLHeadingElement
-            const level = parseInt(heading.tagName.substring(1))
-            ;(this as any).json.headers.push({
-                level,
-                text: heading.innerText,
-            })
-        })
-    },
+    // created() {
+    //     ;(this as any).json.headers = []
+    //     const parser = new DOMParser()
+    //     const el = parser.parseFromString((this as any).json.html, 'text/html')
+    //     el.querySelectorAll('h2, h3').forEach((h) => {
+    //         const heading = h as HTMLHeadingElement
+    //         const level = parseInt(heading.tagName.substring(1))
+    //         ;(this as any).json.headers.push({
+    //             level,
+    //             text: heading.innerText,
+    //         })
+    //     })
+    // },
     
     mounted() {
         hljs.highlightAll()
