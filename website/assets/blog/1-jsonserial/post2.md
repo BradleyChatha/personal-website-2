@@ -1,8 +1,10 @@
-@uid "dlang-json-serialiser-2"@
-@date-created "31-10-2019"@
-@date-updated "07-02-2020"@
-@title "Serialising structs"@
-@seo-tag "serialise-struct"@
+@@@
+id: dlang-json-serialiser-2
+dateCreated: 2019-10-31
+dateUpdated: 2020-02-07
+title: Serialising structs
+seoTag: serialise-struct
+@@@
 
 The ability to serialiser basic types is fun and all, but it's not *useful*.
 

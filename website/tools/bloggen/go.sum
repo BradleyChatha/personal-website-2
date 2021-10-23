@@ -1,0 +1,4 @@
+github.com/go-yaml/yaml v2.1.0+incompatible h1:RYi2hDdss1u4YE7GwixGzWwVo47T8UQwnTLB6vQiq+o=
+github.com/go-yaml/yaml v2.1.0+incompatible/go.mod h1:w2MrLa16VYP0jy6N7M5kHaCkaLENm+P+Tv+MfurjSw0=
+github.com/yuin/goldmark v1.4.2 h1:5qVKCqCRBaGz8EepBTi7pbIw8gGCFnB1Mi6kXU4dYv8=
+github.com/yuin/goldmark v1.4.2/go.mod h1:rmuwmfZ0+bvzB24eSC//bk1R1Zp3hM0OXYv/G2LIilg=

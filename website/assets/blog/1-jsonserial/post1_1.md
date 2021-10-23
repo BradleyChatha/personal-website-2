@@ -1,9 +1,11 @@
-@uid "dlang-json-serialiser-1-1"@
-@date-created "31-10-2019"@
-@date-updated "07-02-2020"@
-@title "Serialising basic D types - Alternative function layout"@
-@seo-title "Template function constraints"@
-@seo-tag "template-function-constraints"@
+@@@
+id: "dlang-json-serialiser-1-1"
+dateCreated: "2019-10-31"
+dateUpdated: "2020-02-07"
+title: Serialising basic D types - Alternative function layout
+seoTitle: Template function constraints
+seoTag: "template-function-constraints"
+@@@
 
 *This post is an optional post, meaning you can skip this post without it being
 detrimental for viewing future posts, and simply exists as an aside "FYI".*

@@ -1,8 +1,10 @@
-@uid "dlang-json-serialiser-6"@
-@date-created "07-05-2020"@
-@date-updated "07-05-2020"@
-@title "Mixin template to automate static deserialise"@
-@seo-tag "mixin-template-automate"@
+@@@
+id: dlang-json-serialiser-6
+dateCreated: 2020-05-07
+dateUpdated: 2020-05-07
+title: Mixin template to automate static deserialise
+seoTag: mixin-template-automate
+@@@
 
 This post concludes this short tutorial series by exploring the options that [mixin templates](https://dlang.org/spec/template-mixin.html)
 can provide us.

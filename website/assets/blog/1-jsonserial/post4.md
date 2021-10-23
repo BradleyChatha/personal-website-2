@@ -1,8 +1,10 @@
-@uid "dlang-json-serialiser-4"@
-@date-created "31-10-2019"@
-@date-updated "07-02-2020"@
-@title "Serialising arrays"@
-@seo-tag "serialise-array-dynamic-static"@
+@@@
+id: dlang-json-serialiser-4
+dateCreated: 2019-10-31
+dateUpdated: 2020-02-07
+title: Serialising arrays
+seoTag: serialise-array-dynamic-static
+@@@
 
 *Note that in the previous post, the `Person` struct was converted into a class*
 *for testing purposes. From this point on `Person` is a struct again unless specified otherwise.*

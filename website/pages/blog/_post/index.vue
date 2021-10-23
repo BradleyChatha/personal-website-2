@@ -65,9 +65,7 @@ export default Vue.extend({
             title: string
             seoUrl: string | null | undefined
         }[]
-        const ourPost = posts.find(
-            (p) => !!json.metadata.find((m: string) => m === p.uid)
-        )
+        const ourPost = posts.find((p) => p.uid === json.uid)
         const series = manifest.series as { postUids: string[] }[]
         const ourSeries = series.find(
             (s) => !!s.postUids.find((uid) => uid === ourPost?.uid)
@@ -90,11 +88,27 @@ export default Vue.extend({
 
         return { json, ourPost, ourSeries, ourIndex: index, ourSeriesPosts }
     },
+
     head() {
         return {
             title: (this as any).ourPost.title + ' - Bradley Chatha',
         }
     },
+
+    created() {
+        ;(this as any).json.headers = []
+        const parser = new DOMParser()
+        const el = parser.parseFromString((this as any).json.html, 'text/html')
+        el.querySelectorAll('h2, h3').forEach((h) => {
+            const heading = h as HTMLHeadingElement
+            const level = parseInt(heading.tagName.substring(1))
+            ;(this as any).json.headers.push({
+                level,
+                text: heading.innerText,
+            })
+        })
+    },
+    
     mounted() {
         hljs.highlightAll()
 

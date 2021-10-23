@@ -1,8 +1,10 @@
-@uid "dlang-json-serialiser-3"@
-@date-created "31-10-2019"@
-@date-updated "07-02-2020"@
-@title "Serialising enums and classes"@
-@seo-tag "serialise-enum-class"@
+@@@
+id: dlang-json-serialiser-3
+dateCreated: 2019-10-31
+dateUpdated: 2020-02-07
+title: Serialising enums and classes
+seoTag: serialise-enum-class
+@@@@
 
 *Side note: In true D fashion, https://run.dlang.io is broken with no sign of it being fixed (in terms of creating links),
 so from this point on I'll be using https://godbolt.org*

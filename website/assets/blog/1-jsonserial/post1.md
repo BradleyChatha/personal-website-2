@@ -1,8 +1,10 @@
-@uid "dlang-json-serialiser-1"@
-@date-created "31-10-2019"@
-@date-updated "06-02-2020"@
-@title "Serialising basic D types"@
-@seo-tag "serialise-basic-d-types"@
+@@@
+id: dlang-json-serialiser-1
+dateCreated: 2019-10-31
+dateUpdated: 2020-02-06
+title: Serialising basic D types
+seoTag: serialise-basic-d-types
+@@@
 
 Have you ever wondered about how serialisers (or other pieces of code) perform their 'magic'? Are you someone
 who wants to learn how to perform such seemingly arcane feats yourself? Or are you simply someone who wants to learn more about D?

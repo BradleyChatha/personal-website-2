@@ -20,6 +20,7 @@ job "personal" {
             config {
                 image = "bradleychatha/website"
                 ports = ["http"]
+                force_pull = true
             }
 
             resources {

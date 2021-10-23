@@ -1,10 +1,11 @@
-
-@uid "dlang-compile-time-text-templates"@
-@date-created "01-05-2021"@
-@date-updated "01-05-2021"@
-@title "Text templates that can execute code at compile-time"@
-@seo-tag "dlang-metaprogramming-text-template-compile-time"@
-@seo-description "This post covers how you can make a text template format that can even execute D code to generate its values. All at compile time. All in one language."@
+@@@
+id: dlang-compile-time-text-templates
+dateCreated: 2021-05-01
+dateUpdated: 2021-05-01
+title: Text templates that can execute code at compile-time
+seoTag: dlang-metaprogramming-text-template-compile-time
+seoDescription: This post covers how you can make a text template format that can even execute D code to generate its values. All at compile time. All in one language.
+@@@
 
 In this post we'll be creating a text template format that is capable of running arbitrary D code, and this is all done at compile-time!
 
